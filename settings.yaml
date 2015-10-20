@@ -1,0 +1,4 @@
+author: 'Long Tran'
+entries:
+  src_node: "source.node"
+  dst_node: "destination.node"

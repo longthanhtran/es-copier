@@ -5,7 +5,7 @@ __author__ = 'longtran'
 __srchost__ = 'your-source-es'
 __dsthost__ = 'your-destination-es'
 
-import sys
+import sys, os.path
 import requests
 import time
 import yaml
@@ -14,8 +14,11 @@ from elasticsearch.helpers import reindex
 from elasticsearch import Elasticsearch
 
 def load_settings():
-    settings = open("settings.yaml").read()
-    return yaml.load(settings)
+    if(os.path.exists("settings.yaml")):
+        settings = open("settings.yaml").read()
+        return yaml.load(settings)
+    else:
+        sys.exit("settings.yaml file not found")
 
 def check_not_empty(ref, message=None):
     if not ref:
@@ -81,5 +84,5 @@ def main():
 if __name__ == '__main__':
     settings = load_settings()
     __srchost__ = settings['entries']['src_node']
-    __dsthost__ = settings['entries']['_node']
-    main()
+    __dsthost__ = settings['entries']['dst_node']
+    # main()

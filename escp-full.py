@@ -85,4 +85,4 @@ if __name__ == '__main__':
     settings = load_settings()
     __srchost__ = settings['entries']['src_node']
     __dsthost__ = settings['entries']['dst_node']
-    # main()
+    main()
